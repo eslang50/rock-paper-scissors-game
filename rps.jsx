@@ -1,30 +1,7 @@
 function getComputerChoice() {
-  let choice = Math.floor(Math.random() * 3);
-  if(choice === 0) {
-    return 'Rock';
-  }
-  else if (choice === 1) {
-    return 'Paper';
-  }
-  else {
-    return 'Scissors';
-  }
+  let choice = ['Rock', 'Paper', 'Scissors'];
+  return choice[Math.floor(Math.random() * choice.length)];
 }
-
-
-
-
-let playerScore = 0;
-let computerScore = 0;
-
-function disable() {
-  let elems = document.getElementsByClassName("btn");
-
-  for(let i = 0; i < elems.length; i++) {
-  elems[i].disabled = true;
-}
-}
-
 
 function playRound(playerSelection, computerSelection) {
   playerSelection = playerSelection.toLowerCase();
@@ -38,7 +15,6 @@ function playRound(playerSelection, computerSelection) {
   else if(playerSelection === "rock") {
     
     if(computerSelection === "scissors") {
-      
        playerScore++;
     }
     else {
@@ -48,23 +24,19 @@ function playRound(playerSelection, computerSelection) {
 
   else if(playerSelection === "paper") {
     if(computerSelection === "rock") {
-      playerScore++;
-      
+      playerScore++;  
     }
     else {
-      computerScore++;
-      
+      computerScore++; 
     }
   }
 
   else {
     if(computerSelection === "paper") {
       playerScore++;
-      
     }
     else {
-      computerScore++;
-      
+      computerScore++; 
     }
   }
 
@@ -100,9 +72,16 @@ buttonContainer.appendChild(score)
 
 const btn = document.querySelectorAll('input');
 
+let playerScore = 0;
+let computerScore = 0;
 
+function disable() {
+  let elems = document.getElementsByClassName("btn");
 
-
+  for(let i = 0; i < elems.length; i++) {
+  elems[i].disabled = true;
+}
+}
 
 btn.forEach((btn) => {
 
