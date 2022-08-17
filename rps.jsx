@@ -11,14 +11,26 @@ function getComputerChoice() {
   }
 }
 
+
+
+
 let playerScore = 0;
 let computerScore = 0;
+
+function disable() {
+  let elems = document.getElementsByClassName("btn");
+
+  for(let i = 0; i < elems.length; i++) {
+  elems[i].disabled = true;
+}
+}
+
 
 function playRound(playerSelection, computerSelection) {
   playerSelection = playerSelection.toLowerCase();
   computerSelection = computerSelection.toLowerCase();
   console.log(playerScore);
-  result.textContent = `Score : ${playerScore}  Computer Score: ${computerScore}`;
+  
   if(playerSelection === computerSelection) {
     return 'Draw! Play again'
   }
@@ -37,90 +49,59 @@ function playRound(playerSelection, computerSelection) {
   else if(playerSelection === "paper") {
     if(computerSelection === "rock") {
       playerScore++;
+      
     }
     else {
       computerScore++;
+      
     }
   }
 
   else {
     if(computerSelection === "paper") {
       playerScore++;
+      
     }
     else {
       computerScore++;
+      
     }
   }
 
   
 
   if(playerScore === 5) {
-    console.log("Player is the winner!");
+    winner.textContent = "You are the winner! \r\nRefresh the page the play again!";
+    disable();
    }
   else if(computerScore === 5) {
-    console.log("Computer is the winner!");
+    winner.textContent = "Computer is the winner! \r\nRefresh the page the play again!";
+    disable();
    }
-}
 
-// function game() {
-
-  
-//   while(1) { 
-//     const playerSelection = prompt("Play your move");
-//     const computerSelection = getComputerChoice();
-//     let result = playRound(playerSelection, computerSelection);
-    
-//     if(result.includes("Win")) {
-//       playerScore++;
-//     }
-//     else if(result.includes("Lose")){
-//       computerScore++;
-//     }
-//     else {
-//       continue;
-//     }
-//     if(playerScore === 5 || computerScore === 5) {
-//       break;
-//     }
-//   }
-  
-//   if(playerScore > computerScore) {
-//    console.log("Player is the winner!");
-//   }
-//   else {
-//    console.log("Computer is the winner!");
-//   }
-// }
+   result.textContent = `Score : ${playerScore}  Computer Score: ${computerScore}`;
+} 
 
 const buttonContainer = document.querySelector('#buttonContainer');
-buttonContainer.setAttribute('style', 'display: flex; gap: 10px; justify-content: center;')
-
-const rock = document.createElement("button");
-rock.textContent = "Rock";
-buttonContainer.appendChild(rock);
-
-const paper = document.createElement("button");
-paper.textContent = "Paper";
-buttonContainer.appendChild(paper);
-
-const scissors = document.createElement("button");
-scissors.textContent = "Scissors";
-buttonContainer.appendChild(scissors);
-
-
+buttonContainer.setAttribute('style', 'display: inline-block; gap: 18px; justify-content: center;')
 
 
 const score = document.createElement("div");
 const result = document.createElement("p")
 
+const winner = document.createElement("p");
+
+winner.setAttribute('style', 'white-space: pre;');
+
 score.appendChild(result);
+score.appendChild(winner)
 
 buttonContainer.appendChild(score)
 
+const btn = document.querySelectorAll('input');
 
-console.log()
 
-const btn = document.querySelectorAll('button');
+
 
 
 btn.forEach((btn) => {
