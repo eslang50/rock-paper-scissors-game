@@ -3,13 +3,16 @@ function getComputerChoice() {
   return choice[Math.floor(Math.random() * choice.length)];
 }
 
-function playRound(playerSelection, computerSelection) {
+function playRound(playerSelection) {
+  let computerSelection = getComputerChoice();
   playerSelection = playerSelection.toLowerCase();
   computerSelection = computerSelection.toLowerCase();
-  console.log(playerScore);
+  console.log(computerSelection);
+  console.log(btn.textContent);
+  winner.textContent = '';
   
   if(playerSelection === computerSelection) {
-    return 'Draw! Play again'
+    winner.textContent = "Draw!"
   }
 
   else if(playerSelection === "rock") {
@@ -86,7 +89,7 @@ function disable() {
 btn.forEach((btn) => {
 
   btn.addEventListener('click', () => {
-    playRound(btn.textContent, getComputerChoice());
+    playRound(btn.value);
   });
 
 });
