@@ -7,6 +7,7 @@ function playRound(playerSelection) {
   let computerSelection = getComputerChoice();
   playerSelection = playerSelection.toLowerCase();
   computerSelection = computerSelection.toLowerCase();
+
   winner.textContent = '';
   
   if(playerSelection === computerSelection) {
